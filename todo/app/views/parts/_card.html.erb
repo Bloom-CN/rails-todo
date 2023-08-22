@@ -1,0 +1,19 @@
+<% if !data.empty? %>
+    <div class="row">
+      <% data.each do |item| %>
+        <div class="col-sm-4 mb-3">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title"><%= item[:title] %></h5>
+                <p class="card-text d-inline-block text-truncate" style="max-width: 100%"><%= item[:context] %></p>
+                
+                <%# routeからpathをとりたかったが、ここはコントローラーから取得 %>
+                <a href=<%= link + item[:id] %> class="d-block btn btn-primary">詳細を見る</a>
+              </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+  <p>一覧はありません。</p>
+<% end %>

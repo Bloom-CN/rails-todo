@@ -1,0 +1,14 @@
+<% if Current.user %>
+  <h1>こんにちは、<%= Current.user.name %>さん</h1>
+  <div class="mb-5"><a href=<%= user_list_path %>>メンバー一覧を見る</a></div>
+  
+  <div>
+    <h3>自分の投稿</h3>
+    <div class="mb-3">
+      <%= render "parts/card", {data: @post_data, link: @link_post_detail} %>
+    </div>
+    <a class="mb-5" href=<%= posts_list_path %>>全ての投稿一覧を見る</a>
+  </div>
+  
+<% end %>
+<%= flash[:success] %>

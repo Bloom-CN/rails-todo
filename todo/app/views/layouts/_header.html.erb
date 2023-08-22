@@ -1,0 +1,7 @@
+<nav class="navbar navbar-dark bg-primary mb-5">
+  <div class="container-fluid d-flex justify-content-end w-100 mb-0">
+    <% if Current.user %>
+      <%= button_to "ログアウト", logout_path, method: :delete, class: 'btn btn-secondary' %>
+    <% end  %>
+  </div>
+</nav>

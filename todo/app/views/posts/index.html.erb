@@ -1,0 +1,8 @@
+<div class="mb-3">
+  <%= render "parts/alert", flash_status: flash %>
+  <a class="btn btn-secondary me-1" href=<%= root_path %>>トップへ戻る</a>
+  <a class="btn btn-primary me-1" href=<%= posts_new_path %>>投稿を作成する</a>
+</div>
+
+<%= render "parts/card", {data: @post_list, link: @link_post_detail} %>
+

@@ -1,0 +1,19 @@
+<h1>編集画面</h1>
+
+<% if @user_detail %>
+  <%= form_with model: @user_model, url: "/edit/" + @user_detail[:id] do |form| %>
+    <%= form.hidden_field :id, value: @user_detail[:id] %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, placeholder: "三文字以上の名前", value: @user_detail[:name], class: "form-control mb-3" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.text_field :email, placeholder: "user@example.com", value: @user_detail[:email], class: "form-control mb-3"  %>
+    </div>
+    <%= form.submit "更新する", class:'btn btn-primary' %>
+
+  <% end %>
+<% end %>
+
+<%= render "parts/alert", flash_status: flash %>

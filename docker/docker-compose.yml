@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  railsDB:
+    container_name: "${PROJECT_NAME}-mysql"
+    build: ./railsDB
+    image: "${PROJECT_NAME}-db"
+    environment:
+      RAILS_ENV: development
+      MYSQL_ROOT_PASSWORD: password
+    platform: linux/x86_64
+    ports:
+      - "${MYSQL_PORT}"
+    volumes:
+      - ./railsDB/db-data:/var/lib/mysql
+    networks:
+        - default
+    env_file: .env
+  
+  rails:
+    container_name: "${PROJECT_NAME}"
+    platform: linux/amd64
+    image: "${PROJECT_NAME}"
+    build:
+      context: ./rails
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/rails:delegated
+    env_file: .env
+    ports:
+      - "${REACT_PORT}"
+    depends_on:
+      - railsDB
+    tty: true

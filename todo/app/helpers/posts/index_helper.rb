@@ -1,0 +1,2 @@
+module Posts::IndexHelper
+end

@@ -1,0 +1,17 @@
+<% if flash_status %>
+  
+  <%# 成功した際のアラート %>
+  <% if flash_status[:success] %>
+    <div class="alert alert-primary" role="alert">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+
+  <%# 失敗した際のアラート %>
+  <% if flash_status[:failed] %>
+    <div class="alert alert-danger" role="alert">
+      <%= flash[:failed] %>
+    </div>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,2 @@
+module Users::LogoutHelper
+end

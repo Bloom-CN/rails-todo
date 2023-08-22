@@ -1,0 +1,24 @@
+<%= render "parts/alert", flash_status: flash %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">名前</th>
+      <th scope="col">メールアドレス</th>
+      <th scope="col">作成日時</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <tbody class="align-middle">
+    <tr>
+      <th scope="row"><%= @user_detail[:id] %></th>
+      <td><%= @user_detail[:name] %></td>
+      <td><%= @user_detail[:email] %></td>
+      <td><%= @user_detail[:created_at] %></td>
+      <td class="d-flex">
+        <a class="btn btn-primary me-1" href=<%= @link_edit %>>編集</a>
+        <%= button_to "削除", "/list", params: {id: @user_detail[:id]}, method: :delete, class: 'btn btn-danger' %>
+      </td>
+    </tr>
+  </tbody>
+</table>

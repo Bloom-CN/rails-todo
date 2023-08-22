@@ -1,0 +1,27 @@
+<div>
+  <%= render "parts/alert", flash_status: flash %>
+  <h2 class="mb-4">投稿編集</h2>
+  <%= form_with model: @post_model, url: posts_edit_path(@post_detail[:id]) do |form| %>
+    <%= form.hidden_field :id, value: @post_detail[:id] %>
+    
+    <div class="form-group">
+      <%= form.label :タイトル %>
+      <%= form.text_field :title, placeholder: "タイトル", class: "form-control mb-3", value: @post_detail[:title] %>
+    </div>
+    <div class="form-group">
+      <%= form.label :投稿内容 %>
+      <%= form.text_field :context, placeholder: "投稿内容", class: "form-control mb-3", value: @post_detail[:context]  %>
+    </div>
+    <%= form.submit "更新する", class:'btn btn-primary' %>
+  <% end %>
+  
+  <% if @post_model.errors.any? %>
+    <div class="alert alert-danger">
+      <% @post_model.errors.full_messages.each do |message|  %>
+        <div>
+          <%= message %>
+        </div>
+      <% end  %>
+    </div>
+  <% end %>
+</div>
